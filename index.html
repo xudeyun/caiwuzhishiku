@@ -3740,9 +3740,25 @@ ${contextText || '（知识库中暂无相关内容）'}`;
                     const batchBtn = document.getElementById('batchModeBtn');
                     if (batchBtn) batchBtn.style.display = 'none';
                     
-                    // 隐藏底部输入区（拖拽上传、文件上传、知识输入）
+                    // 隐藏底部输入区中的上传相关部分（保留搜索框）
                     const inputArea = document.querySelector('.input-area');
-                    if (inputArea) inputArea.style.display = 'none';
+                    if (inputArea) {
+                        // 隐藏拖拽上传区
+                        const dropZone = document.getElementById('dropZone');
+                        if (dropZone) dropZone.style.display = 'none';
+                        
+                        // 隐藏文件上传按钮
+                        const fileUploadWrapper = inputArea.querySelector('.file-upload-wrapper');
+                        if (fileUploadWrapper) fileUploadWrapper.style.display = 'none';
+                        
+                        // 隐藏分类选择器
+                        const categoryWrapper = inputArea.querySelector('.category-wrapper');
+                        if (categoryWrapper) categoryWrapper.style.display = 'none';
+                        
+                        // 隐藏"添加知识"输入框
+                        const textInput = document.getElementById('textInput');
+                        if (textInput) textInput.style.display = 'none';
+                    }
                     
                     // 隐藏搜索结果面板中的"添加"按钮（如果有）
                     const addBtn = document.querySelector('.search-panel .btn');
