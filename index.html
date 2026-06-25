@@ -2658,16 +2658,25 @@
             const chatContainer = document.getElementById('chatContainer');
             const modeSearchBtn = document.getElementById('modeSearchBtn');
             const modeChatBtn = document.getElementById('modeChatBtn');
+            const inputArea = document.querySelector('.input-area');
 
             if (mode === 'chat') {
                 chatContainer.style.display = 'flex';
                 searchPanel.classList.remove('show');
                 modeChatBtn.classList.add('active');
                 modeSearchBtn.classList.remove('active');
+                // GitHub Pages 模式下保留输入区（显示搜索框）
+                if (IS_GITHUB_PAGES && inputArea) {
+                    inputArea.style.display = 'block';
+                }
             } else {
                 chatContainer.style.display = 'none';
                 modeSearchBtn.classList.add('active');
                 modeChatBtn.classList.remove('active');
+                // 搜索模式：显示输入区（包含搜索框）
+                if (inputArea) {
+                    inputArea.style.display = 'block';
+                }
             }
         }
 
